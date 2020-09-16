@@ -35,18 +35,12 @@ heartButton.addEventListener("click", (e) => {
 
 let likeUl = document.querySelector(".likes");  
 
-// 1. check if likeUL has a li with currentCount
-//     a. if yes, get that li
-//         i. increment li.dataset.number + 1
-//     b. if no, create new li
-//         i. with new dataset.number and likes
-//         ii. append to Ul
 let existLi = likeUl.querySelector(`[data-number='${currentCount()}']`);
 if (existLi) {
-    let numLikes = existLi.dataset.likes.innerText;
-  numLikes = parseInt(numLikes) + 1;
- existLi.dataset.likes.innerText = numLikes;
-
+    let numLikes = existLi.dataset.likes;
+    numLikes = parseInt(numLikes) + 1;
+    existLi.dataset.likes = numLikes;
+    existLi.innerText = `${existLi.dataset.number} has ${existLi.dataset.likes} likes.`;
 } else {
     let likeLi = document.createElement("li");     
     likeLi.dataset.number = currentCount();
